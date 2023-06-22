@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container-fluid mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- <h2>Department</h2> -->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Dep No</th>
+            <th>Name Lao</th>
+            <th>Name Eng</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for dep in deps %}
+            <tr>
+              <td>{{ dep.dep_no }}</td>
+              <td>{{ dep.name_la }}</td>
+              <td>{{ dep.name_en }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

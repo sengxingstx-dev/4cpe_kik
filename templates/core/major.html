@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container-fluid mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- <h2>Department</h2> -->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Major No</th>
+            <th>Name Lao</th>
+            <th>Name Eng</th>
+            <th>Department</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for major in majors %}
+            <tr>
+              <td>{{ major.major_no }}</td>
+              <td>{{ major.name_la }}</td>
+              <td>{{ major.name_en }}</td>
+              <td>{{ major.department }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

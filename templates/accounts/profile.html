@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <!-- Style 1 -->
+  <!-- <div class="container mt-4 mb-4">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Profile Info</h4>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label for="username">Username:</label>
+              <input type="text" class="form-control" id="username" value="{{ user.username }}" readonly>
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" class="form-control" id="email" value="{{ user.email }}" readonly>
+            </div>
+            <!- Add additional user information fields as needed ->
+
+            <!- You can also display the user's profile picture if available ->
+            {% if user.profile.picture %}
+              <div class="form-group">
+                <label>Profile Picture:</label>
+                <img src="{{ user.profile.picture.url }}" alt="Profile Picture" class="img-fluid">
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Style 2 -->
+  <div class="container mt-4 mb-4">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Profile Info</h4>
+          </div>
+          <div class="card-body">
+            <div class="form-group row">
+              <label for="username" class="col-sm-4 col-form-label">Username:</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control-plaintext" id="username" value="{{ user.username }}" readonly>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="first_name" class="col-sm-4 col-form-label">First name:</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control-plaintext" id="first_name" value="{{ user.first_name }}" readonly>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="last_name" class="col-sm-4 col-form-label">Last name:</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control-plaintext" id="last_name" value="{{ user.last_name }}" readonly>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="email" class="col-sm-4 col-form-label">Email:</label>
+              <div class="col-sm-8">
+                <input type="email" class="form-control-plaintext" id="email" value="{{ user.email }}" readonly>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="gender" class="col-sm-4 col-form-label">Gender:</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control-plaintext" id="gender" value="{{ user.gender }}" readonly>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="dob" class="col-sm-4 col-form-label">Date of Birth:</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control-plaintext" id="dob" value="{{ user.dob }}" readonly>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="village" class="col-sm-4 col-form-label">Village:</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control-plaintext" id="village" value="{{ user.village }}" readonly>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="district" class="col-sm-4 col-form-label">District:</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control-plaintext" id="district" value="{{ user.district }}" readonly>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="province" class="col-sm-4 col-form-label">Province:</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control-plaintext" id="province" value="{{ user.province }}" readonly>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="nationality" class="col-sm-4 col-form-label">Nationality:</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control-plaintext" id="nationality" value="{{ user.nationality }}" readonly>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="tribe" class="col-sm-4 col-form-label">Tribe:</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control-plaintext" id="tribe" value="{{ user.tribe }}" readonly>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="phone" class="col-sm-4 col-form-label">Phone:</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control-plaintext" id="phone" value="{{ user.phone }}" readonly>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="degree" class="col-sm-4 col-form-label">Degree:</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control-plaintext" id="degree" value="{{ user.degree }}" readonly>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="position" class="col-sm-4 col-form-label">Position:</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control-plaintext" id="position" value="{{ user.position }}" readonly>
+              </div>
+            </div>
+            <!-- Add additional user information fields as needed -->
+
+            <!-- You can also display the user's profile picture if available -->
+            {% if user.profile.picture %}
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Profile Picture:</label>
+                <div class="col-sm-8">
+                  <img src="{{ user.profile.picture.url }}" alt="Profile Picture" class="img-fluid rounded-circle">
+                </div>
+              </div>
+            {% endif %}
+          </div>
+          <div class="card-footer align-items-center justify-content-center">
+            <a href="{% url 'update-profile' pk=request.user.id %}" class="btn btn-primary">Edit Profile</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Style 3 -->
+  <!-- <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h4 class="card-title">Profile</h4>
+          </div>
+          <div class="card-body">
+            <div class="media">
+              <img src="{{ user.profile.picture.url }}" alt="Profile Picture" class="mr-3 rounded-circle" style="width: 100px;">
+              <div class="media-body">
+                <h5 class="mt-0">{{ user.username }}</h5>
+                <p>Email: {{ user.email }}</p>
+                <!- Add additional user information fields as needed ->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+{% endblock %}

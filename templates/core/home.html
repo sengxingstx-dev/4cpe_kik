@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container-fluid mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- <h2>Score Details</h2> -->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Credit</th>
+            <th>Check Score</th>
+            <th>Test Score</th>
+            <th>Homework</th>
+            <th>Activity</th>
+            <th>Project</th>
+            <th>Midterm</th>
+            <th>Final</th>
+            <th>Total</th>
+            <th>GPA</th>
+            <th>Sum Credit</th>
+            <th>Grade</th>
+            <th>Course</th>
+            <th>Term</th>
+            <!-- <th>PS</th> -->
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for score in scores %}
+            <tr>
+              <td>{{ score.credit }}</td>
+              <td>{{ score.s_check }}</td>
+              <td>{{ score.s_test }}</td>
+              <td>{{ score.s_homework }}</td>
+              <td>{{ score.s_activity }}</td>
+              <td>{{ score.s_project }}</td>
+              <td>{{ score.s_midterm }}</td>
+              <td>{{ score.s_final }}</td>
+              <td>{{ score.s_total }}</td>
+              <td>{{ score.s_grade }}</td>
+              <td>{{ score.sum_credit }}</td>
+              <td>{{ score.grade }}</td>
+              <td>{{ score.course }}</td>
+              <td>{{ score.term_score }}</td>
+              <td>{{ score.ps }}</td>
+              {% if request.user != score.teach_by %}
+              <td><a class="btn btn-warning" href="" onclick="alert('You are not allowed to edit.')">Edit</a></td>
+              <td><a class="btn btn-danger" href="">Delete</a></td>
+              {% else %}
+              <td><a class="btn btn-warning" href="{% url 'edit-score-detail' pk=score.id %}">Edit</a></td>
+              <td><a class="btn btn-danger" href="">Delete</a></td>
+              {% endif %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
